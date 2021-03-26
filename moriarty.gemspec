@@ -10,14 +10,14 @@ Gem::Specification.new do |s|
     Easy to use and to extend.
   DESC
   s.authors = ['decentralizuj']
-  s.homepage = 'https://github.com/decentralizuj/moriarti'
+  s.homepage = 'https://github.com/decentralizuj/moriarty'
   s.license = 'MIT'
 
-  s.metadata['homepage_uri'] = 'https://github.com/decentralizuj/moriarti'
-  s.metadata['source_code_uri'] = 'https://github.com/decentralizuj/moriarti'
-  s.metadata['bug_tracker_uri'] = 'https://github.com/decentralizuj/moriarti/issues'
+  s.metadata['homepage_uri'] = 'https://github.com/decentralizuj/moriarty'
+  s.metadata['source_code_uri'] = 'https://github.com/decentralizuj/moriarty'
+  s.metadata['bug_tracker_uri'] = 'https://github.com/decentralizuj/moriarty/issues'
 
-  s.files = ['bin/moriarty', 'lib/moriarty.rb', 'lib/moriarty/cli.rb', 'moriarti.gemspec',
+  s.files = ['bin/moriarty', 'lib/moriarty.rb', 'lib/moriarty/cli.rb', 'moriarty.gemspec',
              'README.md', 'LICENSE']
   s.bindir = 'bin'
   s.executables = ['moriarty']
