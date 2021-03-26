@@ -1,0 +1,48 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/moriarty'
+
+  # Simple way to try first version
+  # accept '--hunt' as argument
+
+  hunt = ARGV.include?('--hunt') ? :hunt : :search
+
+  # If no args, or include '-h' or '--help', print banner
+  # If use '--hunt', do not search for '--hunt' username
+
+  if ARGV.empty? or ARGV.include? '-h' or ARGV.include? '--help'
+
+    puts "\nSearch social networks for free username".yellow
+    puts " $ ".white + "ruby bin/moriarty sherlock watson".green
+    puts "\nRun with --hunt to search for registered users".yellow
+    puts " $ ".white + "ruby bin/moriarty sherlock watson --hunt\n".green
+    exit(1)
+
+  else
+
+    system 'clear' or system 'cls'
+    start_time = Time.now.to_i
+
+    ARGV.each do |user|
+      next if user == '--hunt'
+
+      print "\nStarting #{hunt} for username -> ".white.bold
+      puts "[".green + user.yellow + "]".green; puts ""
+
+      Moriarty.find! user,         'github.com',    hunt
+      Moriarty.find! user,         'facebook.com',  hunt
+      Moriarty.find! user,         'instagram.com', hunt
+      Moriarty.find! "@#{user}",   'dev.to',        hunt
+      Moriarty.find! "@#{user}",   'medium.com',    hunt
+      Moriarty.find! "/u/#{user}", 'reddit.com',    hunt
+      Moriarty.find! "@#{user}",   'tiktok.com',    hunt
+    end
+
+    end_time = Time.now.to_i
+
+    print "\nFinished in -> ".white.bold
+    print "[".green + "#{count = end_time - start_time}".yellow + "]".green
+    print " second".white
+    puts "s".white unless count.to_s.end_with?('1')
+    puts ""
+  end
