@@ -1,4 +1,4 @@
-# Moriarti
+# Moriarty
 
 Tool to check social networks for available username.  
 _Idea from python tool - sherlock_
