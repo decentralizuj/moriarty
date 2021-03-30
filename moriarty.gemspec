@@ -7,7 +7,6 @@ Gem::Specification.new do |s|
   s.description = <<~DESC
     Check social networks for username, and find out is it taken.
     Option to run in 'hunt' mode, to confirm registered users across the networks.
-    Easy to use and to extend.
   DESC
   s.authors = ['decentralizuj']
   s.homepage = 'https://github.com/decentralizuj/moriarty'
@@ -27,6 +26,6 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'rest-client', '~> 2.1.0'
   s.add_runtime_dependency 'nokogiri', '~> 1.11.2'
 
-  s.add_development_dependency 'bundler'
-  s.add_development_dependency 'rake'
+  s.add_development_dependency 'bundler', '~> 2.2.9'
+  s.add_development_dependency 'rake', '~> 13.0.3'
 end
