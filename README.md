@@ -1,3 +1,5 @@
+![Moriarty Preview](docs/moriarty.gif)
+
 Gem is still in alpha, many things will be added (like scrapping info from social networks).
 Breaking changes are highly possible, so I do not suggest use of this gem except for development and test.
 That means, do not use it in production services, otherwise feel free to play with it.
@@ -154,8 +156,3 @@ V-0.2.0
 At the moment I do not need any contribution on this project, but that will change after v1.
 That will be in about 1 month, so you can watch repository to stay updated with latest changes.
 Github is always updated before rubygems. And again, after v1, that will be automated.
-
-
-# Preview
-
-![GIF](docs/moriarty.gif)
