@@ -6,15 +6,16 @@ require_relative '../lib/moriarty'
   # accept '--hunt' as argument
 
   hunt = ARGV.include?('--hunt') ? :hunt : :search
+  message = hunt == :hunt ? "Starting hunt on user -> " : "Starting search for free username -> "
 
   # If no args, or include '-h' or '--help', print banner
   # If use '--hunt', do not search for '--hunt' username
 
   if ARGV.empty? or ARGV.include? '-h' or ARGV.include? '--help'
 
-    puts "\nSearch social networks for free username".yellow
+    puts "\nSearch social networks for free username".cyan
     puts " $ ".white + "ruby bin/moriarty sherlock watson".green
-    puts "\nRun with --hunt to search for registered users".yellow
+    puts "\nRun with --hunt to search for registered users".cyan
     puts " $ ".white + "ruby bin/moriarty sherlock watson --hunt\n".green
     exit(1)
 
@@ -26,24 +27,31 @@ require_relative '../lib/moriarty'
     ARGV.each do |user|
       next if user == '--hunt'
 
-      print "\nStarting #{hunt} for username -> ".white.bold
-      puts "[".green + user.yellow + "]".green; puts ""
+      puts
+      Moriarty.p2(message, :cyan, :bold)
+      Moriarty.p1(user)
+      puts; puts
 
       Moriarty.find! user,         'github.com',            hunt
       Moriarty.find! user,         'rubygems.org/profiles', hunt
       Moriarty.find! "@#{user}",   'dev.to',                hunt
       Moriarty.find! "@#{user}",   'medium.com',            hunt
       Moriarty.find! "/u/#{user}", 'reddit.com',            hunt
+      Moriarty.find! user,	   'youtube.com',           hunt
       Moriarty.find! user,         'facebook.com',          hunt
       Moriarty.find! user,         'instagram.com',         hunt
       Moriarty.find! "@#{user}",   'tiktok.com',            hunt
     end
 
     end_time = Time.now.to_i
+    counter  = end_time - start_time
 
-    print "\nFinished in -> ".white.bold
-    print "[".green + "#{count = end_time - start_time}".yellow + "]".green
-    print " second".white
-    puts "s".white unless count.to_s.end_with?('1')
-    puts ""
+    sec = ' second'
+    sec += 's' unless (counter.to_s.end_with?('1') or counter.to_s.end_with?('11'))
+
+    puts
+    Moriarty.p2('Finished in ->', :cyan, :bold)
+    Moriarty.p1(counter)
+    Moriarty.p2(sec, :cyan, :bold)
+    puts; puts
   end

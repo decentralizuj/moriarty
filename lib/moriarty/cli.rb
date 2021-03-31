@@ -17,15 +17,28 @@ class Moriarty
     @jim = Moriarty.new name.to_s, site.to_s
     @jim.go
 
+    name = print_name(name).to_s
+    site = print_url(site).to_s
+
     case    
     when type.to_sym == :hunt && @jim.success?
-      puts " [+] [FOUND!]".white + " #{ print_name(name)} found on #{ print_url(site) }".yellow
+      p1('+')
+      p1('FOUND!')
+      p2(" #{name} found on ")
+      puts p2(site, :cyan, :bold)
     when type.to_sym == :hunt && !@jim.success?
-      puts " [-] #{ print_name(name) } not found on #{ print_url(site) }".red
-    when @jim.success?
-      puts " [-] #{ print_name(name) } is taken on #{ print_url(site) }".red
+      p1('-', :red, :red)
+      p2(" #{name} not found on ", :red)
+      puts p2(site, :red)
+   when @jim.success?
+      p1('-', :red, :red)
+      p2(" #{name} is taken on ", :red)
+      puts p2(site, :red)
     else
-      puts " [+] [FREE!]".white + " #{ print_name(name) } is free on #{ print_url(site) }".yellow
+      p1('+')
+      p1('FREE!')
+      p2(" #{name} is free on ")
+      puts p2(site, :cyan, :bold)
     end
   end
 
@@ -61,6 +74,18 @@ class Moriarty
     name.gsub!('@','') if name.to_s.start_with?('@')
     name.gsub!('#','') if name.to_s.start_with?('#')
     name.gsub!('/u/','') if name.to_s.start_with?('/u/')
-    return name
+    return name.to_s
+  end
+
+  def self.p1( title, color1 = :'light_green', color2 = :cyan, type = :bold )
+    str = ' ['.colorize(color2) + title.to_s.colorize(color1) + ']'.colorize(color2)
+    str = str.bold if type == :bold
+    print str
+  end
+
+  def self.p2( title, color = :cyan, type = :regular)
+    str = title.colorize(color)
+    str = str.bold if type == :bold
+    print str
   end
 end
