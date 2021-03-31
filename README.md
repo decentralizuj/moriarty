@@ -22,17 +22,17 @@ Clone repo and install dependencies:
 
 ```bash
 # Moriarty use rest-client, nokogiri and colorize gems
-git clone https://github.com/decentralizuj/moriarty.git && cd moriarty && bundle install
+ git clone https://github.com/decentralizuj/moriarty.git && cd moriarty && bundle install
 ```  
 
 Or install from rubygems:
 
 ```ruby
 # local
-gem install moriarty
+ gem install moriarty
 
 # bundler
-gem 'moriarty', '~> 0.2.0'
+ gem 'moriarty', '~> 0.2.0'
 ```
 
 
@@ -123,8 +123,25 @@ We have url and name as instance variables, so this is self method.
   # => 'moriarty'
 ```  
 
+Methods `#p1` and `#p2` are there to print colorized output
 
-# Lates Changes
+```ruby
+# p1 wrap string with bracelets, bold by default
+ Moriarty.p1('mystring', :green, :white, :regular)
+ # => '[mystring]' -> string is green, bracelets are white
+
+# p2 only put string colorized, bold if defined
+ Moriarty.p2('mystring', :red, :bold)
+ # => 'mystring' -> red and bold
+```  
+
+
+# Latest Changes
+
+Last push, will be compiled into gem V-0.3.0 when ready
+ - Add methods for smart printing
+ - changed colors in cli
+ - added youtube as source
 
 V-0.2.0
  - Moriarty#print_name added to remove '@, #, /u/' from username when printing in cli.
