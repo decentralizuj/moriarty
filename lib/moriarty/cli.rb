@@ -19,13 +19,13 @@ class Moriarty
 
     case    
     when type.to_sym == :hunt && @jim.success?
-      puts " [FOUND!]".white + " #{name} found on #{ print_url(site) }".yellow
+      puts " [+] [FOUND!]".white + " #{ print_name(name)} found on #{ print_url(site) }".yellow
     when type.to_sym == :hunt && !@jim.success?
-      puts " #{name} not found on #{ print_url(site) }".red
+      puts " [-] #{ print_name(name) } not found on #{ print_url(site) }".red
     when @jim.success?
-      puts " #{name} is taken on #{ print_url(site) }".red
+      puts " [-] #{ print_name(name) } is taken on #{ print_url(site) }".red
     else
-      puts " [FREE!]".white + " #{name} is free on #{ print_url(site) }".yellow
+      puts " [+] [FREE!]".white + " #{ print_name(name) } is free on #{ print_url(site) }".yellow
     end
   end
 
@@ -42,12 +42,25 @@ class Moriarty
   #  => 'github'
 
   def self.print_url( site )
+    site, name = site.to_s, ''
     if site.start_with?('http')
       site.gsub!("https://", '') or site.gsub!("http://", '')
     end
     site.gsub!("www.", '') if site.start_with?('www.')
     ext = site.to_s.split('.').last
-    return site.gsub!(".#{ext}", '') if ext.size.to_i < 5
+    name = site.gsub(".#{ext}", '')
+    name = name.split('/').first if ext.size < 5
+    return name
   end
-  
+
+  # Remove extensions from username
+  # Moriarty.print_name('@moriarty')
+  #  => 'moriarty'
+
+  def self.print_name( name )
+    name.gsub!('@','') if name.to_s.start_with?('@')
+    name.gsub!('#','') if name.to_s.start_with?('#')
+    name.gsub!('/u/','') if name.to_s.start_with?('/u/')
+    return name
+  end
 end

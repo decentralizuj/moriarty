@@ -29,13 +29,14 @@ require_relative '../lib/moriarty'
       print "\nStarting #{hunt} for username -> ".white.bold
       puts "[".green + user.yellow + "]".green; puts ""
 
-      Moriarty.find! user,         'github.com',    hunt
-      Moriarty.find! user,         'facebook.com',  hunt
-      Moriarty.find! user,         'instagram.com', hunt
-      Moriarty.find! "@#{user}",   'dev.to',        hunt
-      Moriarty.find! "@#{user}",   'medium.com',    hunt
-      Moriarty.find! "/u/#{user}", 'reddit.com',    hunt
-      Moriarty.find! "@#{user}",   'tiktok.com',    hunt
+      Moriarty.find! user,         'github.com',            hunt
+      Moriarty.find! user,         'rubygems.org/profiles', hunt
+      Moriarty.find! "@#{user}",   'dev.to',                hunt
+      Moriarty.find! "@#{user}",   'medium.com',            hunt
+      Moriarty.find! "/u/#{user}", 'reddit.com',            hunt
+      Moriarty.find! user,         'facebook.com',          hunt
+      Moriarty.find! user,         'instagram.com',         hunt
+      Moriarty.find! "@#{user}",   'tiktok.com',            hunt
     end
 
     end_time = Time.now.to_i

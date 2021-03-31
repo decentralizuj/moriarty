@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name        = 'moriarty'
-  s.version     = '0.1.0'
+  s.version     = '0.2.0'
   s.summary     = 'Moriarty - Check social networks for available username.'
   s.description = <<~DESC
     Check social networks for username, and find out is it taken.
