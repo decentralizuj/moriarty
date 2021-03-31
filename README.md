@@ -1,7 +1,11 @@
+Gem is still in alpha, many things will be added (like scrapping info from social networks).
+Breaking changes are highly possible, so I do not suggest use of this gem except for development and test.  
+That means, do not use it in production services, otherwise feel free to play with it.
+
 # Moriarty
 
 Tool to check social networks for available username.  
-_Idea from python tool - sherlock_
+Idea from python tool - sherlock
 
 ---
 
@@ -96,4 +100,17 @@ Moriarty.hunt! 'somename', 'github.com'
 
 Moriarty.print_url 'https://www.github.com/'
 # => 'github'
-```
+```  
+
+# Lates Changes
+
+V-0.2.0
+ - Moriarty#print_name added to remove '@, #, /u/' from username when printing in cli.
+ - Added 'rubygems.org' as source to search
+ - Added '[+]' and '[-]' to cli output
+
+# Contribution
+
+At the moment I do not need any contribution on this project, but that will change after v1.
+That will be in about 1 month, so you can watch repository to stay updated with latest changes.
+Github is always updated before rubygems. And again, after v1, that will be automated.
