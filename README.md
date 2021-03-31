@@ -1,5 +1,5 @@
 Gem is still in alpha, many things will be added (like scrapping info from social networks).
-Breaking changes are highly possible, so I do not suggest use of this gem except for development and test.  
+Breaking changes are highly possible, so I do not suggest use of this gem except for development and test.
 That means, do not use it in production services, otherwise feel free to play with it.
 
 # Moriarty
