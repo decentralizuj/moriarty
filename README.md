@@ -1,3 +1,5 @@
+ - _GIF preview v-0.2.0 - without latest changes'_
+
 ![Moriarty Preview](docs/moriarty.gif)
 
 Gem is still in alpha, many things will be added (like scrapping info from social networks).
@@ -29,12 +31,19 @@ Clone repo and install dependencies:
 
 Or install from rubygems:
 
+> DISCLAIMER:
+GitHub repository is updated before Rubygems.
+Before v-1.0.0 is released, recommended way is to clone repo, or install with bundler from git.
+
 ```ruby
 # local
  gem install moriarty
 
 # bundler
  gem 'moriarty', '~> 0.2.0'
+
+# bundler from github
+ gem 'moriarty', git: 'https://github.com/decentralizuj/moriarty'
 ```
 
 
@@ -45,9 +54,9 @@ To search for registered user, execute with `--hunt` as argument.
 
 Read source-code, each method is explained with examples.
 
-```
-# if run without arguments, or with `-h || --help`, help banner is printed
+```ruby
 # if installed localy, you can run 'moriarty' without 'ruby bin/'
+#  > $ torify moriarty decentalizuj --hunt
 
  ruby bin/moriarty
  # => print usage instructions
@@ -128,11 +137,11 @@ We have url and name as instance variables, so this is self method.
 Methods `#p1` and `#p2` are there to print colorized output
 
 ```ruby
-# p1 wrap string with bracelets, bold by default
+# p1 wrap string with braces, bold by default
  Moriarty.p1('mystring', :green, :white, :regular)
  # => '[mystring]' -> string is green, bracelets are white
 
-# p2 only put string colorized, bold if defined
+# p2 only print string colorized, and/or bold
  Moriarty.p2('mystring', :red, :bold)
  # => 'mystring' -> red and bold
 ```  
@@ -144,6 +153,7 @@ Last push, will be compiled into gem V-0.3.0 when ready
  - Add methods for smart printing
  - changed colors in cli
  - added youtube as source
+ - bold username and site in cli, site is capitalized
 
 V-0.2.0
  - Moriarty#print_name added to remove '@, #, /u/' from username when printing in cli.
