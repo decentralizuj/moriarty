@@ -12,23 +12,24 @@ class Moriarty
   # Moriarty.find! :stupiduser, 'facebook.com', :hunt
   #  => [FREE!] if user 'stupiduser' is registered on facebook
 
-  def self.find!( name, site = 'github.com', type = :search )
+  def self.find!( username, web = 'github.com', type = :search )
 
-    @jim = Moriarty.new name.to_s, site.to_s
+    @jim = Moriarty.new username.to_s, web.to_s
     @jim.go
 
-    name = print_name(name).to_s
-    site = print_url(site).to_s
+    name = print_name(username).to_s
+    site = print_url(web).to_s
 
     case    
     when type.to_sym == :hunt && @jim.success?
       p1('+')
       p1('FOUND!')
-      p2(" #{name} found on ")
+      p2(" #{name}", :cyan, :bold)
+      p2(" found on >> ") 
       puts p2(site, :cyan, :bold)
     when type.to_sym == :hunt && !@jim.success?
       p1('-', :red, :red)
-      p2(" #{name} not found on ", :red)
+      p2(" #{name} fail on ", :red)
       puts p2(site, :red)
    when @jim.success?
       p1('-', :red, :red)
@@ -37,7 +38,8 @@ class Moriarty
     else
       p1('+')
       p1('FREE!')
-      p2(" #{name} is free on ")
+      p2(" #{name}", :cyan, :bold)
+      p2(" is free on >> ")
       puts p2(site, :cyan, :bold)
     end
   end
@@ -63,7 +65,7 @@ class Moriarty
     ext = site.to_s.split('.').last
     name = site.gsub(".#{ext}", '')
     name = name.split('/').first if ext.size < 5
-    return name
+    return name.capitalize
   end
 
   # Remove extensions from username
@@ -74,7 +76,7 @@ class Moriarty
     name.gsub!('@','') if name.to_s.start_with?('@')
     name.gsub!('#','') if name.to_s.start_with?('#')
     name.gsub!('/u/','') if name.to_s.start_with?('/u/')
-    return name.to_s
+    return name
   end
 
   def self.p1( title, color1 = :'light_green', color2 = :cyan, type = :bold )
