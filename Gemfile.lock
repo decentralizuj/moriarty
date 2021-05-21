@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    moriarty (0.2.0)
+    moriarty (0.2.2)
       colorize (~> 0.8.1)
       nokogiri (~> 1.11.2)
       rest-client (~> 2.1.0)
@@ -19,7 +19,7 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2021.0225)
     netrc (0.11.0)
-    nokogiri (1.11.2-x86_64-linux)
+    nokogiri (1.11.5-x86_64-linux)
       racc (~> 1.4)
     racc (1.5.2)
     rake (13.0.3)
