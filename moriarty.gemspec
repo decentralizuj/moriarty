@@ -24,7 +24,7 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency 'colorize', '~> 0.8.1'
   s.add_runtime_dependency 'rest-client', '~> 2.1.0'
-  s.add_runtime_dependency 'nokogiri', '~> 1.11.2'
+  s.add_runtime_dependency 'nokogiri', '>= 1.11.2', '< 1.15.0'
 
   s.add_development_dependency 'bundler', '~> 2.2.9'
   s.add_development_dependency 'rake', '~> 13.0.3'
